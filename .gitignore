@@ -1,0 +1,18 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+env/
+venv/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# OCR & Pipeline scratch cache
+.ocr_cache/
+*.tmp

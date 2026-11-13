@@ -1,0 +1,16 @@
+{
+  "name": "medical-food-data-pipeline-marketplace",
+  "owner": {
+    "name": "Anirut Kepan, RD"
+  },
+  "plugins": [
+    {
+      "name": "medical-food-data-pipeline",
+      "source": "./",
+      "skills": "./skills/",
+      "description": "Automated pipeline for Thai medical food & enteral nutrition data extraction, normalization, and formula-driven Excel generation.",
+      "version": "0.1.0",
+      "license": "MIT"
+    }
+  ]
+}
