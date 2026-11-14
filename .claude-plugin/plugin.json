@@ -1,6 +1,6 @@
 {
   "name": "medical-food-data-pipeline",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Medical Food and Enteral Nutrition data extraction, normalization, and workbook generation pipeline adhering to Thai FDA MOPH Notification No. 445.",
   "author": {
     "name": "Anirut Kepan, RD"

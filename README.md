@@ -2,7 +2,7 @@
 *(ระบบสกัดและประมวลผลข้อมูลอาหารทางการแพทย์และสารอาหารทางสายให้อาหาร)*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational.svg)](pyproject.toml)
+[![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational.svg)](pyproject.toml)
 [![Python: >=3.10](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://www.python.org/)
 [![Thai FDA: MOPH 445](https://img.shields.io/badge/Thai%20FDA-MOPH%20Notification%20445-orange.svg)](https://www.moph.go.th/)
 
@@ -130,6 +130,13 @@ python3 skills/medical-food-data-pipeline/scripts/pipeline_audit.py \
 # 3. Run the full test suite
 python3 -m unittest discover -s tests -t . -v
 ```
+
+---
+
+## Clinical & Regulatory Disclaimer (ข้อจำกัดความรับผิดชอบทางคลินิก)
+
+- **English:** This project is a data extraction, normalization, and workbook-formatting tool—**not a certified medical device or standalone clinical decision support system**. All extracted nutrient values, unit conversions, dilutions, and Excel outputs must be independently verified against the physical product packaging, official manufacturer documentation, and applicable Thai FDA / MOPH regulations. Patient formula selection and enteral nutrition prescriptions must remain under the clinical judgment and responsibility of qualified healthcare professionals (registered dietitians, pharmacists, or physicians).
+- **ภาษาไทย:** ผลลัพธ์จากระบบนี้เป็นเพียงเครื่องมือช่วยสกัด ปรับมาตรฐาน และจัดรูปแบบข้อมูลเบื้องต้น **ไม่ใช่เครื่องมือวินิจฉัยหรือสั่งการรักษาทางการแพทย์โดยอัตโนมัติ** ค่าสารอาหาร ปริมาณการเจือจาง สูตร Excel และเอกสารทั้งหมดที่ได้ **ต้องตรวจสอบเทียบกับฉลากผลิตภัณฑ์จริง เอกสารทางการ และประกาศกระทรวงสาธารณสุขที่เกี่ยวข้องเสมอ** และการนำไปใช้ดูแลผู้ป่วยต้องอยู่ภายใต้ดุลยพินิจของบุคลากรทางการแพทย์ (นักกำหนดอาหาร เภสัชกร หรือแพทย์) เท่านั้น
 
 ---
 

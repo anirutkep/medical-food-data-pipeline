@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "medical-food-data-pipeline-skill"
-version = "0.1.0"
+version = "0.1.1"
 description = "Dual-agent skill and automation pipeline for medical food and enteral nutrition products compliant with Thai FDA MOPH Notification No. 445."
 readme = "README.md"
 requires-python = ">=3.10"

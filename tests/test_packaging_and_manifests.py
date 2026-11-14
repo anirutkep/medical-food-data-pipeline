@@ -71,7 +71,7 @@ class TestPackagingAndManifests(unittest.TestCase):
                 self.assertEqual(data.get("name"), "medical-food-data-pipeline")
                 self.assertEqual(data.get("skills"), "./skills/")
                 self.assertEqual(data.get("license"), "MIT")
-                self.assertEqual(data.get("version"), "0.1.0")
+                self.assertEqual(data.get("version"), "0.1.1")
 
             if is_marketplace:
                 self.assertEqual(data.get("name"), "medical-food-data-pipeline-marketplace")
@@ -84,6 +84,7 @@ class TestPackagingAndManifests(unittest.TestCase):
                 self.assertEqual(entry.get("source"), "./")
                 self.assertEqual(entry.get("skills"), "./skills/")
                 self.assertEqual(entry.get("license"), "MIT")
+                self.assertEqual(entry.get("version"), "0.1.1")
 
     def test_pyproject_toml(self):
         """Verify pyproject.toml conforms to PEP 621 specifications."""
@@ -95,7 +96,7 @@ class TestPackagingAndManifests(unittest.TestCase):
 
         project = data.get("project", {})
         self.assertEqual(project.get("name"), "medical-food-data-pipeline-skill")
-        self.assertEqual(project.get("version"), "0.1.0")
+        self.assertEqual(project.get("version"), "0.1.1")
         self.assertEqual(project.get("requires-python"), ">=3.10")
         self.assertIn("openpyxl>=3.1.0", project.get("dependencies", []))
         self.assertNotIn("<AUTHOR_NAME>", raw_text)
@@ -275,11 +276,15 @@ class TestSkillMdAndStylingPortability(unittest.TestCase):
         ]
         compiled = [re.compile(p, re.IGNORECASE) for p in forbidden_patterns]
 
+        ignored_dirs = {"__pycache__", ".git", ".venv", ".pytest_cache", ".ocr_cache"}
         for p in self.pkg_root.rglob("*"):
             if not p.is_file():
                 continue
             rel = p.relative_to(self.pkg_root)
-            if "__pycache__" in rel.parts or rel.parts[0] == "tests":
+            if (
+                any(part in ignored_dirs or part.endswith(".egg-info") for part in rel.parts)
+                or rel.parts[0] == "tests"
+            ):
                 continue
             self.assertNotIn(
                 p.suffix.lower(),
@@ -311,7 +316,21 @@ class TestSkillMdAndStylingPortability(unittest.TestCase):
 
         self.assertIn("Anirut Kepan, RD", readme_text)
         self.assertIn("anirutkep/medical-food-data-pipeline", readme_text)
-        self.assertIn("0.1.0", readme_text)
+        self.assertIn("0.1.1", readme_text)
+
+    def test_clinical_disclaimer_present(self):
+        """Verify README.md and SKILL.md both include the clinical and regulatory disclaimer."""
+        readme_text = (self.pkg_root / "README.md").read_text(encoding="utf-8")
+        skill_text = self.skill_md.read_text(encoding="utf-8")
+
+        self.assertIn("Clinical & Regulatory Disclaimer", readme_text)
+        self.assertIn("ฉลากผลิตภัณฑ์จริง", readme_text)
+        self.assertIn("บุคลากรทางการแพทย์", readme_text)
+        self.assertIn("healthcare professionals", readme_text)
+
+        self.assertIn("Clinical & Regulatory Disclaimer", skill_text)
+        self.assertIn("ฉลากผลิตภัณฑ์จริง", skill_text)
+        self.assertIn("บุคลากรทางการแพทย์", skill_text)
 
 
 if __name__ == "__main__":

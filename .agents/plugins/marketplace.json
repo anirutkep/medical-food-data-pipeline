@@ -9,7 +9,7 @@
       "source": "./",
       "skills": "./skills/",
       "description": "Automated pipeline for Thai medical food & enteral nutrition data extraction, normalization, and formula-driven Excel generation.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT"
     }
   ]
